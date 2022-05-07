@@ -45,10 +45,10 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                    role="button" aria-haspopup="true"
-                   aria-expanded="false">Generos<span class="caret"></span></a>
+                   aria-expanded="false">Géneros<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Registrar genero</a></li>
-                  <li><a href="#">Ver lista de generos</a></li>
+                  <li><a href="{{route('generos.create')}}">Registrar género</a></li>
+                  <li><a href="{{route('generos.index')}}">Ver lista de géneros</a></li>
                 </ul>
               </li>
               <li class="dropdown">

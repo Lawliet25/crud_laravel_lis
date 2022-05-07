@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EditorialesController;
 use App\Http\Controllers\AutoresController;
+use App\Http\Controllers\GenerosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,3 +46,12 @@ Route::controller(AutoresController::class)->group(function(){
   Route::post('/autores/{id}','update')->name('autores.update');
   Route::get('/autores/{id}','destroy')->name('autores.destroy');
   });
+
+  Route::controller(GenerosController::class)->group(function(){
+    Route::get('/generos/index','index')->name('generos.index');
+    Route::get('/generos/create','create')->name('generos.create');
+    Route::post('/generos','store')->name('generos.store');
+    Route::get('/generos/edit/{id}','edit')->name('generos.edit');
+    Route::post('/generos/{id}','update')->name('generos.update');
+    Route::get('/generos/{id}','destroy')->name('generos.destroy');
+    });

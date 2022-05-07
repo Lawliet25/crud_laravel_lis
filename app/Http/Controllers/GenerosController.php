@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Generos;
 
 class GenerosController extends Controller
 {
@@ -13,7 +14,8 @@ class GenerosController extends Controller
      */
     public function index()
     {
-        //
+      $generos=Generos::all();
+      return view('generos.index',['generos'=>$generos]);
     }
 
     /**
@@ -23,7 +25,7 @@ class GenerosController extends Controller
      */
     public function create()
     {
-        //
+          return view('generos.create');
     }
 
     /**
@@ -34,7 +36,18 @@ class GenerosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $request->validate([
+
+        'nombre_genero'=>'required',
+        'descripcion'=>'required']);
+
+        $genero= new Generos();
+
+        $genero->nombre_genero=$request->nombre_genero;
+        $genero->descripcion=$request->descripcion;
+
+        $genero->save();
+        return redirect()->route('generos.index')->with('status', 'Género registrado exitosamente.');
     }
 
     /**
@@ -56,7 +69,8 @@ class GenerosController extends Controller
      */
     public function edit($id)
     {
-        //
+      $genero=Generos::find($id);
+      return view('generos.edit', compact('genero'));
     }
 
     /**
@@ -68,7 +82,18 @@ class GenerosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $request->validate([
+
+        'nombre_genero'=>'required',
+        'descripcion'=>'required']);
+
+        $genero= Generos::find($id);
+
+        $genero->nombre_genero=$request->nombre_genero;
+        $genero->descripcion=$request->descripcion;
+
+        $genero->save();
+        return redirect()->route('generos.index');
     }
 
     /**
@@ -79,6 +104,7 @@ class GenerosController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $genero=Generos::destroy($id);
+      return redirect()->route('generos.index');
     }
 }
