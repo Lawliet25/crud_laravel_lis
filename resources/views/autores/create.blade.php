@@ -46,7 +46,7 @@
                     </div>
 
                     <input type="submit" class="btn btn-info" value="Guardar" name="Guardar">
-                    <a class="btn btn-danger" href="${pageContext.request.contextPath}/editoriales.do?op=listar">Cancelar</a>
+                    <a class="btn btn-danger" href="{{route('autores.index')}}">Cancelar</a>
                 </form>
             </div>
         </div>
